@@ -1,6 +1,12 @@
 server:
   port: 10020
 spring:
+  application:
+    name: mall-order
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 82.157.174.118:8848
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://bj-cynosdbmysql-grp-i47fu02a.sql.tencentcdb.com:25704/spring_cloud_demo_mall?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
