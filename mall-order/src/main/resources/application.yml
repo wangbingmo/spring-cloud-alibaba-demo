@@ -6,7 +6,11 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 82.157.174.118:8848
+        server-addr: nacos:8848
+    sentinel:
+      transport:
+        dashboard: sentinel:8090
+        port: 20020
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://bj-cynosdbmysql-grp-i47fu02a.sql.tencentcdb.com:25704/spring_cloud_demo_mall?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
@@ -17,4 +21,7 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
+feign:
+  sentinel:
+    enabled: true
 

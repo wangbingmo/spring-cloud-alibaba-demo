@@ -6,26 +6,30 @@ import com.example.mallcommon.entity.Order;
 import com.example.mallcommon.entity.Product;
 import com.example.mallorder.feign.ProductService;
 import com.example.mallorder.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@RestController
+@Controller
+@ResponseBody
+@RequestMapping("/order")
 public class OrderController {
 
-    @Autowired
-    OrderService orderService;
+    final OrderService orderService;
+    final ProductService productService;
 
-    @Autowired
-    ProductService productService;
+    public OrderController(OrderService orderService, ProductService productService) {
+        this.orderService = orderService;
+        this.productService = productService;
+    }
 
-    @RequestMapping("/order/{oid}")
+    @RequestMapping("/{oid}")
     public Order getById(@PathVariable("oid") Integer oid) {
         return orderService.getByOid(oid);
     }
 
-    @RequestMapping("/order/prod/{pid}")
+    @RequestMapping("/prod/{pid}")
     public CommonResult<Order> createOrder(@PathVariable("pid") Integer pid) {
         CommonResult<Product> result = productService.getByPid(pid);
         if (result == null || result.getCode() != ResultCode.SUCCESS.getCode()) {

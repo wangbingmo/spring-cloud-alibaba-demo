@@ -4,20 +4,24 @@ import com.example.mallcommon.api.CommonResult;
 import com.example.mallcommon.api.ResultCode;
 import com.example.mallcommon.entity.Product;
 import com.example.mallproduct.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@RestController
+@Controller
+@ResponseBody
 public class ProductController {
 
-    @Autowired
-    ProductService productService;
+    final ProductService productService;
 
     @Value("${server.port}")
     String port;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @RequestMapping("/product/{pid}")
     public CommonResult<Product> getByPid(@PathVariable("pid") Integer pid) {
