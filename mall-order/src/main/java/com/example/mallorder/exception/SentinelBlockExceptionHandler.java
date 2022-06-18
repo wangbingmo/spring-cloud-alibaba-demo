@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 实现sentinel全局异常处理
+ * 实现sentinel自定义异常返回
  * 也可以通过添加Config类实现-> <a href="https://github.com/sentinel-group/sentinel-guides/blob/8f2ec31407e8479a4a394c67846c9723269e04f8/sentinel-guide-spring-cloud/web-api-demo/src/main/java/com/alibaba/csp/sentinel/demo/config/SentinelWebConfig.java">示例</a>
  * 参考blog: <a href="https://genjiejie.blog.csdn.net/article/details/109458856">地址</a>
  */
